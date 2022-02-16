@@ -45,7 +45,7 @@ class apinat(Resource):
 class apinatall(Resource):
     @api.expect(parser)
     @api.marshal_with(model_apinatall)
-    def post(self):
+    def get(self):
         args = parser.parse_args(strict=True)
         if (args.get("limit") > 0 and args.get("limit")<=2000) and (args.get("offset")>=0 and args.get("offset")<total):
             resp_data = query_all(offset=args.get("offset"), limit=args.get("limit"))
