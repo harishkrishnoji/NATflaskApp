@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Page Content -->
+
+    <div class="container-fluid">
+      <div class="float-right p-3 mb-0">
+        <!-- <a class="btn btn-primary" href="/api/doc" role="button">Swagger UI</a> -->
+        <a href="/api/doc" class="link-primary" target="_blank">API Doc (Swagger UI)</a>
+      </div>
+      <h2 align="center"><br>NAT LookUP - SANE Managed Firewalls</h2>
+      <br>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+            <form class="form-inline" action="/nats" method="POST">
+                <div class="form-row align-items-center">
+                    <h4>Enter valid IPv4 address</h4>
+                    <div class="form-group mx-sm-3 mb-2 row justify-content-center">
+                        <label for="inputaddress" class="sr-only">address</label>
+                        <input type="text" class="form-control" id="inputaddress" placeholder="x.x.x.x" name="addr">
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary mb-2">NAT LookUP</button> -->
+                    <button type="submit" class="btn btn-success mb-2">Search NAT</button>
+                    <div class="form-group mx-sm-4 mb-1 row justify-content-center">
+                        <h6>[ Total NAT Count : {{total_nat}} ]</h6>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      <!-- <br> -->
+      <div class="card bg-light mb-3">
+        <div class="card-body">
+          <p>SANE Managed LB VIP Data has been migrated to Nautobot (VIP Tracker Plugin).</p> ->
+          <a href="https://nautobot.onefiserv.net" class="link-primary" target="_blank">Nautobot URL</a><br>->
+          <a href="https://fiservcorp.sharepoint.com/sites/sane/SitePages/Nautobot%20VIP%20Tracker.aspx" class="link-primary" target="_blank">Nautobot VIP Tracker User Guide</a>
+        </div>
+      </div>
+      <br>
+      <h6>For feedback/questions/issues send email to SANE-FirewallEngineering@fiserv.com</h6>
+      <i>Note: If no results found, then NAT does not exist on SANE managed Firewalls.</i>
+    </div>
+{% endblock content %}

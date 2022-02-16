@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+  <!-- Page Content -->
+  <div class="container-fluid">
+    <div class="float-right p-3 mb-0">
+        <a class="btn btn-primary" href="/" role="button">Home</a>
+    </div>
+    <div class="text-center">
+      <h4 align="center"><br>NAT LookUP for {{address}}</h4>
+      <!-- <a class="btn btn-primary" href="/" role="button">Home</a> -->
+    </div>
+    <table id="nattable" class="display cell-border" style="width:100%">
+        <thead>
+            <tr>
+                <th>Firewall</th>
+                <th>Firewall-Name</th>
+                <th>Rule-Name</th>
+                <th>Original-Source</th>
+                <th>Original-Destination</th>
+                <th>Method</th>
+                <th>Translated-Source</th>
+                <th>Translated-Destination</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for row in nat %}
+          <tr>
+            <td>{{row.Firewall}}</td>
+            <td>{{row.FirewallName}}</td>
+            <td>{{row.Name}}</td>
+            <td>{{row.OriginalSource}}</td>
+            <td>{{row.OriginalDestination}}</td>
+            <td>{{row.Method}}</td>
+            <td>{{row.TranslatedSource}}</td>
+            <td>{{row.TranslatedDestination}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+{% endblock content %}
