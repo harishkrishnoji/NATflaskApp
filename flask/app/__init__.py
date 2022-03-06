@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Api
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///../db/ofs_cp_nat.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///../db/global_nat.db"
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 db = SQLAlchemy(app)
 
