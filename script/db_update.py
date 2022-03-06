@@ -15,7 +15,7 @@ filename = [
 "OFS_PaloAlto_Main.json",
 "OFS_PaloAlto_Virtual.json"]
 
-gb = GitLab_Client(filepath="fw-nat/OFS_PaloAlto_Lowers.json", token="a6JRJoWise3vAJJ_zghm")
+gb = GitLab_Client(token="a6JRJoWise3vAJJ_zghm")
 sq_db = WriteToDB("global")
 
 def db_fun(f):
@@ -26,13 +26,13 @@ def db_fun(f):
 def fileSizeCheck():
     print("Performing file check")
     nfile_size = os.path.getsize('global_nat.db')
-    ofile_size = os.path.getsize('/appserver/natdata/db/ofs_cp_nat.db')
+    ofile_size = os.path.getsize('/appserver/natdata/db/global_nat.db')
     print(f"Old file size: {ofile_size}; New file size : {nfile_size}")
     if nfile_size >= ofile_size:
         print("Moving new file to container DB")
         subprocess.run(["mv","global_nat.db","/appserver/natdata/db/"])
-        subprocess.run(["/appserver/natdata/docker-compose","down"])
-        subprocess.run(["/appserver/natdata/docker-compose","up","--build"])
+        subprocess.run(["/usr/local/bin/docker-compose","-f","/appserver/natdata/docker-compose.yml","down"])
+        subprocess.run(["/usr/local/bin/docker-compose","-f","/appserver/natdata/docker-compose.yml","up","--build"])
 
 
 if __name__ == "__main__":
